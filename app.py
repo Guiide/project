@@ -3,8 +3,16 @@ import joblib
 import numpy as np
 
 # โหลดโมเดล
-model = joblib.load("/content/drive/MyDrive/project/best_random_forest_model.pkl")
-
+url = "https://drive.google.com/uc?export=download&id=17xLLprqNYo9v2djw-Q9EkTVxHBfW7omg"
+output = 'best_random_forest_model.pkl'
+# โหลดโมเดลด้วย TensorFlow/Keras
+# Load the model and reconstructed data from the .pkl file
+try:
+    with open(output, 'rb') as f:
+        loaded_data = pickle.load(f)
+    st.write("Model and reconstructed data loaded successfully.")
+except Exception as e:
+    st.write(f"Error loading model and data: {e}")
 # แปลง Paper Type
 paper_type_mapping = {
     "Art": 0,
