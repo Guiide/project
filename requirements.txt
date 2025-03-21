@@ -1,3 +1,6 @@
+streamlit
 gdown
-scikit-learn
+numpy
 pandas
+scikit-learn
+tensorflow
