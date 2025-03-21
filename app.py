@@ -1,18 +1,19 @@
 import streamlit as st
 import gdown
 import numpy as np
+import joblib
+import os
 
-# โหลดโมเดล
+# ✅ URL จาก Google Drive (เปลี่ยน YOUR_FILE_ID ให้ตรงกับลิงก์ของคุณ)
 url = "https://drive.google.com/uc?export=download&id=17xLLprqNYo9v2djw-Q9EkTVxHBfW7omg"
-output = 'best_random_forest_model.pkl'
-# โหลดโมเดลด้วย TensorFlow/Keras
-# Load the model and reconstructed data from the .pkl file
-try:
-    with open(output, 'rb') as f:
-        loaded_data = pickle.load(f)
-    st.write("Model and reconstructed data loaded successfully.")
-except Exception as e:
-    st.write(f"Error loading model and data: {e}")
+output = "best_random_forest_model.pkl"
+
+# ✅ ดาวน์โหลดไฟล์ (ถ้ายังไม่มีไฟล์)
+if not os.path.exists(output):
+    gdown.download(url, output, quiet=False)
+
+# ✅ โหลดโมเดลด้วย joblib
+model = joblib.load(output)
 # แปลง Paper Type
 paper_type_mapping = {
     "Art": 0,
