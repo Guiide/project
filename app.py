@@ -24,7 +24,7 @@ paper_type_mapping = {
 }
 
 # UI
-st.set_page_config(page_title="📄 Paper Usage Predictor", layout="centered")
+#st.set_page_config(page_title="📄 Paper Usage Predictor", layout="centered")
 st.title("📄 ทำนายจำนวนใบกระดาษที่ต้องใช้")
 st.markdown("กรอกข้อมูลด้านล่างเพื่อให้โมเดลพยากรณ์")
 
