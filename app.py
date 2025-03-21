@@ -1,5 +1,5 @@
 import streamlit as st
-import joblib
+import gdown
 import numpy as np
 
 # โหลดโมเดล
