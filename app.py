@@ -3,7 +3,8 @@ import joblib
 import numpy as np
 
 # โหลดโมเดล
-model = joblib.load("waste_model.pkl")
+model_path = '/content/drive/MyDrive/project/waste_model.pkl'
+model = joblib.load(model_path)
 
 st.title("📦 Print Waste Prediction App")
 st.write("กรอกข้อมูลด้านล่างเพื่อทำนาย Waste_Percentage")
