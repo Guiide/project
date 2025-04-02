@@ -23,8 +23,8 @@ product_type = st.number_input("📦 Product Type (เช่น 0, 1, 2...)", mi
 paper_weight = st.number_input("🧻 Paper Weight (gsm)", min_value=0)
 color_front = st.number_input("🎨 Colors on Front (จำนวนสี)", min_value=0)
 customer_name = st.number_input("👤 Customer Code (ตัวเลขที่ใช้แทนชื่อลูกค้า)", min_value=0)
-produced_amount: 52772.41
-good_amount: 48149.04
+produced_amount = 52772.41
+good_amount = 48149.04
 input_data = np.array([[order, product_type, paper_weight, color_front, customer_name,produced_amount,good_amount]])
 
 
