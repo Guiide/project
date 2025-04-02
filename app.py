@@ -1,10 +1,18 @@
 import streamlit as st
 import joblib
 import numpy as np
+import gdown
+
+# ใส่ file_id จากลิงก์ Google Drive
+file_id = '1mY7GfZpDHfyv1fWNeEgBAtMX2dlB3ouI'
+url = f'https://drive.google.com/uc?id={file_id}'
+
+# ดาวน์โหลดไฟล์มาเก็บไว้ local
+output = 'waste_model.pkl'
+gdown.download(url, output, quiet=False)
 
 # โหลดโมเดล
-model_path = '/content/drive/MyDrive/project/waste_model.pkl'
-model = joblib.load(model_path)
+model = joblib.load(output)
 
 st.title("📦 Print Waste Prediction App")
 st.write("กรอกข้อมูลด้านล่างเพื่อทำนาย Waste_Percentage")
