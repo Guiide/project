@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 import gdown
-
+import pickle
 # ใส่ file_id จากลิงก์ Google Drive
 #file_id = '1mY7GfZpDHfyv1fWNeEgBAtMX2dlB3ouI'
 #url = f'https://drive.google.com/uc?id={file_id}'
