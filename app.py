@@ -17,7 +17,7 @@ paper_weight = st.number_input("📄 Paper Weight (gsm)", min_value=0)
 
 # 📦 เลือกประเภทสินค้า (Label → Code)
 product_type_display = {
-    "Poster": 0,
+    "Box": 0,
     "Sticker": 1,
     "Booklet": 3,
     "Brochure": 4
