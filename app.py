@@ -8,14 +8,16 @@ with open("a_model.pkl", "rb") as f:
     model = pickle.load(f)
 
 st.header("📦 Print Waste Prediction App")
-st.write("กรอกข้อมูลด้านล่างเพื่อทำนาย Waste_Percentage")
+st.markdown("**กรอกข้อมูลด้านล่างเพื่อทำนาย Waste_Percentage**")
 
 # ฟีเจอร์หลัก
+st.markdown("### 🔢 **ข้อมูลทั่วไป**")
 order = st.number_input("📝 Order Number", min_value=0)
 color_front = st.number_input("🎨 Color (Front)", min_value=0)
 paper_weight = st.number_input("📄 Paper Weight (gsm)", min_value=0)
 
 # 📦 เลือกประเภทสินค้า (Label → Code)
+st.markdown("### 📦 **เลือกประเภทสินค้า**")
 product_type_display = {
     "Box": 0,
     "Sticker": 1,
@@ -26,6 +28,7 @@ product_choice = st.selectbox("📦 Product Type", list(product_type_display.key
 product_code = product_type_display[product_choice]
 
 # 👤 เลือกประเภทลูกค้า (Label → One-hot suffix)
+st.markdown("### 👤 **เลือกประเภทลูกค้า**")
 cust_type_display = {
     "High Waste": "High_Waste",
     "Medium Waste": "Medium_Waste",
@@ -58,4 +61,5 @@ input_df = pd.DataFrame([input_dict])
 # ทำนาย
 if st.button("🔍 Predict Waste %"):
     pred = model.predict(input_df)
-    st.success(f"📈 Predicted Waste Percentage: {pred[0]:.2f}%")
+    st.success(f"📈 **Predicted Waste Percentage: {pred[0]:.2f}%**")
+
