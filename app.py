@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 
-with open("w_model.pkl", "rb") as f:
+with open("a_model.pkl", "rb") as f:
     model = pickle.load(f)
 st.write("🧠 ฟีเจอร์ที่โมเดลต้องการ:", model.feature_names_in_)
 
