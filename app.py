@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 import gdown
 import pickle
-
+import pandas as pd
 output = 'a_model.pkl'
 #gdown.download(url, output, quiet=False)
 
