@@ -12,7 +12,7 @@ st.write("กรอกข้อมูลด้านล่างเพื่อ�
 
 # ฟีเจอร์หลัก
 order = st.number_input("📝 Order Number", min_value=0)
-color_front = st.number_input("🎨 Color (Front)", min_value=0)
+color_front = st.number_input("🎨 Color", min_value=0)
 paper_weight = st.number_input("📄 Paper Weight (gsm)", min_value=0)
 
 # 📦 เลือกประเภทสินค้า (Label → Code)
