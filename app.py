@@ -3,30 +3,56 @@ import pickle
 import numpy as np
 import pandas as pd
 
+# โหลดโมเดล
 with open("a_model.pkl", "rb") as f:
     model = pickle.load(f)
-st.write("🧠 ฟีเจอร์ที่โมเดลต้องการ:", model.feature_names_in_)
 
 st.title("📦 Print Waste Prediction App")
+st.write("กรอกข้อมูลด้านล่างเพื่อทำนาย Waste_Percentage")
 
+# ฟีเจอร์หลัก
 order = st.number_input("📝 Order Number", min_value=0)
-product_type = st.selectbox("📦 Product Type", [0, 1, 2])
-paper_weight = st.number_input("🧻 Paper Weight", min_value=0)
-color_front = st.number_input("🎨 Colors (Front)", min_value=0)
-customer_type = st.selectbox("👤 Customer Code", [0, 1, 2])
+color_front = st.number_input("🎨 Color (Front)", min_value=0)
+paper_weight = st.number_input("📄 Paper Weight (gsm)", min_value=0)
 
-# ดูชื่อฟีเจอร์ที่ต้องการ
-expected_cols = model.feature_names_in_
-input_dict = {col: 0 for col in expected_cols}
+# 📦 เลือกประเภทสินค้า (Label → Code)
+product_type_display = {
+    "Poster": 0,
+    "Sticker": 1,
+    "Booklet": 3,
+    "Brochure": 4
+}
+product_choice = st.selectbox("📦 Product Type", list(product_type_display.keys()))
+product_code = product_type_display[product_choice]
 
-# อัปเดตค่าที่ป้อน
-input_dict["Order"] = order
-input_dict["Paper_Weight"] = paper_weight
-input_dict["color_front"] = color_front
-input_dict[f"ProductType_{product_type}"] = 1
-input_dict[f"CustType_{customer_type}"] = 1
+# 👤 เลือกประเภทลูกค้า (Label → One-hot suffix)
+cust_type_display = {
+    "High Waste": "High_Waste",
+    "Medium Waste": "Medium_Waste",
+    "Low Waste": "Low_Waste"
+}
+cust_choice = st.selectbox("👤 Customer Type", list(cust_type_display.keys()))
+cust_code = cust_type_display[cust_choice]
 
-# แปลงเป็น DataFrame พร้อมชื่อคอลัมน์ตรงกัน
+# เตรียม dict ฟีเจอร์ทั้งหมด
+input_dict = {
+    "Order": order,
+    "color_front": color_front,
+    "Paper_Weight": paper_weight,
+    "ProductType_0": 0,
+    "ProductType_1": 0,
+    "ProductType_3": 0,
+    "ProductType_4": 0,
+    "CustType_High_Waste": 0,
+    "CustType_Low_Waste": 0,
+    "CustType_Medium_Waste": 0
+}
+
+# แปลงให้เป็น one-hot
+input_dict[f"ProductType_{product_code}"] = 1
+input_dict[f"CustType_{cust_code}"] = 1
+
+# สร้าง DataFrame
 input_df = pd.DataFrame([input_dict])
 
 # ทำนาย
