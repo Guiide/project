@@ -4,7 +4,7 @@ import numpy as np
 import gdown
 import pickle
 
-output = 'w_model.pkl'
+output = 'a_model.pkl'
 #gdown.download(url, output, quiet=False)
 
 # 📦 โหลดโมเดลด้วย pickle
