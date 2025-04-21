@@ -12,8 +12,8 @@ st.write("กรอกข้อมูลด้านล่างเพื่อ�
 
 # ฟีเจอร์หลัก
 order = st.number_input("📝 **Order Number**", min_value=0)
-color_front = st.number_input("🎨 Color", min_value=0)
-paper_weight = st.number_input("📄 Paper Weight (gsm)", min_value=0)
+color_front = st.number_input("🎨 **Color**", min_value=0)
+paper_weight = st.number_input("📄 **Paper Weight (gsm)**", min_value=0)
 
 # 📦 เลือกประเภทสินค้า (Label → Code)
 product_type_display = {
@@ -22,7 +22,7 @@ product_type_display = {
     "Booklet": 3,
     "Brochure": 4
 }
-product_choice = st.selectbox("📦 Product Type", list(product_type_display.keys()))
+product_choice = st.selectbox("📦 **Product Type**", list(product_type_display.keys()))
 product_code = product_type_display[product_choice]
 
 # 👤 เลือกประเภทลูกค้า (Label → One-hot suffix)
@@ -31,7 +31,7 @@ cust_type_display = {
     "Medium Waste": "Medium_Waste",
     "Low Waste": "Low_Waste"
 }
-cust_choice = st.selectbox("👤 Customer Type", list(cust_type_display.keys()))
+cust_choice = st.selectbox("👤 **Customer Type**", list(cust_type_display.keys()))
 cust_code = cust_type_display[cust_choice]
 
 # เตรียม dict ฟีเจอร์ทั้งหมด
