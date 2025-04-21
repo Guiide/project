@@ -7,7 +7,7 @@ import pandas as pd
 with open("a_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-st.title("📦 Print Waste Prediction App")
+st.header("📦 Print Waste Prediction App")
 st.write("กรอกข้อมูลด้านล่างเพื่อทำนาย Waste_Percentage")
 
 # ฟีเจอร์หลัก
