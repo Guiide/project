@@ -7,7 +7,7 @@ import pickle
 #file_id = '1mY7GfZpDHfyv1fWNeEgBAtMX2dlB3ouI'
 #url = f'https://drive.google.com/uc?id={file_id}'
 
-output = 'waste_model.pkl'
+output = 'w_model.pkl'
 #gdown.download(url, output, quiet=False)
 
 # 📦 โหลดโมเดลด้วย pickle
